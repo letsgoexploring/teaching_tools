@@ -142,6 +142,6 @@ Executes a Python script or a list of scripts.
 ### Usage Examples
 
 #### Create a Figure
-   
+
    figure_code = make_figure(image_filename='example.png',caption='This is an example figure.',label='fig:example',height='5cm',width='10cm')
    print(figure_code)
