@@ -124,13 +124,20 @@ Generates an answer key for a given exam.
 #### Returns
 - `dict`: A dictionary representing the answer key.
 
----
-
 ## Usage Examples
 
 ### Creating an Exam
 	
 	from exam import mc_exam
-	
+
 	exam = mc_exam(exam_file='sample_exam.tex', correct_string='CORRECT', seed=42)
 	exam.print_exam()
+
+### Shuffling Questions
+
+	shuffled_exam = exam.shuffle_questions(seed=123)
+	shuffled_exam.exam_to_latex(filename='shuffled_exam.tex')
+
+### Generating an Answer Key
+
+	exam.answer_key_to_latex(filename='answer_key.tex')
