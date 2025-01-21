@@ -124,6 +124,8 @@ Generates an answer key for a given exam.
 #### Returns
 - `dict`: A dictionary representing the answer key.
 
+---
+
 ## Usage Examples
 
 ### Creating an Exam
