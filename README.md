@@ -1,18 +1,23 @@
 # Teaching Tools
 
-`teaching_tools` is a Python module designed to assist educators with tasks such as managing homework, sending emails, interacting with Google Calendar, and working with LaTeX files. 
+`teaching_tools` is a Python module with utilities to assist educators, particularly in higher educatin, with tasks such as managing homework, creating multiple choice exams, sending emails, interacting with Google Calendar, and working with LaTeX files. The utilities for interacting with Gmail and Google Calendar may be useful in contexts outside of education
 
 ## Features
-- Manage and format homework answers in LaTeX or Gradescope.
 - Send and manage Gmail messages.
 - Add, find, and delete Google Calendar events.
+- Manage and format homework answers for Gradescope.
+- Tools for creating multiple choice exams.
+- Compile LaTeX files and create handouts for Beamer slides
 - Convert Jupyter Notebooks to Python scripts or HTML files.
-- Tools for working with LaTeX and exams.
+
+## Examples
+ - [Sending and working with Gmail](docs/gmail.md)
+
 
 ## Documentation
-- [Homework Class](docs/homework.md)
 - [Gmail Class](docs/gmail.md)
 - [Google Calendar Class](docs/google_calendar.md)
+- [Homework Class](docs/homework.md)
 - [LaTeX Module](docs/latex.md)
 - [Exam Module](docs/exam.md)
 - [Standalone Functions](docs/functions.md)

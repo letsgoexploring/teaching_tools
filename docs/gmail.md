@@ -1,218 +1,209 @@
-# Gmail Class Documentation
+# Gmail API Module Documentation
 
-The `gmail` class provides methods to interact with Gmail via the Google API, enabling functionalities such as sending emails, retrieving messages, managing labels, and creating drafts.
+## authenticate_google_app
+Authenticates and initializes a Google API service.
 
----
+### Arguments
+- `credentials_path` (str): Path to the credentials file for the Google API.
+- `token_path` (str): Path to the token file for storing user authentication.
+- `SCOPES` (list): List of scopes for the Google API service.
+- `service_name` (str): Name of the Google API service (e.g., 'gmail', 'calendar').
+- `service_version` (str): Version of the Google API service (e.g., 'v1', 'v3').
 
-## Class: `gmail`
-
-### Description
-The `gmail` class allows email operations using Gmail’s API, such as sending messages, adding/removing labels, retrieving message metadata, and creating drafts.
-
----
-
-### Initialization
-
-#### Arguments:
-- **`credentials_path`** *(str)*:  
-  Path to the Google API credentials file. Default: `'credentials.json'`.
-- **`token_path`** *(str)*:  
-  Path to the token file for storing user authentication. Default: `'token.json'`.
-- **`sender`** *(str, optional)*:  
-  Default sender email address. Default: `None`.
-
-#### Attributes:
-- **`service`**:  
-  Authenticated Gmail API service object.
-- **`sender`** *(str)*:  
-  Email address used as the default sender for outgoing emails.
+### Returns
+- `googleapiclient.discovery.Resource`: Authenticated Google API service object.
 
 ---
 
-## Methods
+## gmail Class
+Class for managing and sending Gmail messages via the Google API.
 
-### `add_message_label`
+### __init__
+Initializes an instance of the `gmail` class.
 
-**Description:**  
-Adds labels to a Gmail message.
+#### Arguments
+- `credentials_path` (str): Path to the Google API credentials file. Default: `'credentials.json'`.
+- `token_path` (str): Path to the token file for authentication. Default: `'token.json'`.
+- `sender` (str, optional): Default sender email address.
 
-**Arguments:**
-- **`message_id`** *(str)*:  
-  ID of the message to label.
-- **`label_names`** *(str or list)*:  
-  Name(s) of the label(s) to add.
-
-**Returns:**  
-None
-
----
-
-### `delete_message`
-
-**Description:**  
-Deletes a Gmail message.
-
-**Arguments:**
-- **`message_id`** *(str)*:  
-  ID of the message to delete.
-
-**Returns:**  
-None
+#### Attributes
+- `service` (`googleapiclient.discovery.Resource`): Authenticated Gmail API service object.
+- `sender` (str): Email address used as the default sender.
 
 ---
 
-### `get_all_labels`
+### add_message_label
+Adds one or more labels to a Gmail message.
 
-**Description:**  
+#### Arguments
+- `message` (dict, optional): Message metadata dictionary. Default: `None`.
+- `message_id` (str): ID of the message to label.
+- `label_names` (str or list): Name(s) of the label(s) to add.
+- `label_ids` (str or list): ID(s) of the label(s) to add.
+
+#### Returns
+- None
+
+---
+
+### delete_message
+Permanently deletes a Gmail message.
+
+#### Arguments
+- `message` (dict, optional): Message metadata dictionary. Default: `None`.
+- `message_id` (str): ID of the message to delete.
+
+#### Returns
+- None
+
+---
+
+### get_all_labels
 Retrieves all Gmail labels for the user.
 
-**Returns:**  
-A pandas DataFrame containing label names and metadata.
+#### Returns
+- `pandas.DataFrame`: DataFrame containing label names and metadata.
 
 ---
 
-### `get_from_sender`
-
-**Description:**  
+### get_from_sender
 Finds all messages from a specific sender.
 
-**Arguments:**
-- **`sender`** *(str)*:  
-  Email address of the sender to search for.
-- **`label_name`** *(str, optional)*:  
-  Name of the Gmail label to filter messages by. Default is None.
-- **`label_id`** *(str, optional)*:  
-  ID of the Gmail label to filter messages by. Default is None.
+#### Arguments
+- `sender` (str): Email address of the sender to search for.
+- `label_name` (str, optional): Name of the Gmail label to filter messages by. Default: `None`.
+- `label_id` (str, optional): ID of the Gmail label to filter messages by. Default: `None`.
 
-**Returns:**  
-A list of message metadata dictionaries, or `None` if no messages are found.
+#### Returns
+- `list`: List of message metadata dictionaries. Returns `None` if no messages are found.
 
 ---
 
-### `get_label_id`
-
-**Description:**  
+### get_label_id
 Retrieves the ID of a Gmail label by its name.
 
-**Arguments:**
-- **`label_name`** *(str)*:  
-  Name of the label.
+#### Arguments
+- `label_name` (str): Name of the label.
 
-**Returns:**  
-The corresponding label ID as a string.
+#### Returns
+- `str`: Label ID.
 
 ---
 
-### `get_labeled_messages`
-
-**Description:**  
+### get_labeled_messages
 Retrieves messages with a specific Gmail label.
 
-**Arguments:**
-- **`label_name`** *(str, optional)*:  
-  Name of the label. Default is None.
-- **`label_id`** *(str, optional)*:  
-  ID of the label. Default is None.
+#### Arguments
+- `label_name` (str, optional): Name of the label. Default: `None`.
+- `label_id` (str, optional): ID of the label. Default: `None`.
 
-**Returns:**  
-A list of message metadata dictionaries, or `None` if no messages are found.
+#### Returns
+- `list`: List of message metadata dictionaries. Returns `None` if no messages are found.
 
 ---
 
-### `get_message`
-
-**Description:**  
+### get_message
 Retrieves a Gmail message by its ID.
 
-**Arguments:**
-- **`message_id`** *(str, optional)*:  
-  ID of the message to retrieve. Default is None.
-- **`message`** *(dict, optional)*:  
-  Message metadata dictionary. Default is None.
+#### Arguments
+- `message` (dict, optional): Message metadata dictionary. Default: `None`.
+- `message_id` (str, optional): ID of the message to retrieve. Default: `None`.
 
-**Returns:**  
-The full Gmail message data as a dictionary.
+#### Returns
+- `dict`: Full Gmail message data.
 
 ---
 
-### `make_message`
+### get_message_return_path
+Retrieves the 'Return-Path' header of a Gmail message.
 
-**Description:**  
+#### Arguments
+- `message` (dict, optional): Message metadata dictionary. Default: `None`.
+- `message_id` (str, optional): ID of the message. Default: `None`.
+
+#### Returns
+- `str`: Email address from the 'Return-Path' header.
+
+---
+
+### get_return_paths
+Retrieves 'Return-Path' headers from a list of messages.
+
+#### Arguments
+- `messages` (list): List of message metadata dictionaries.
+
+#### Returns
+- `list`: List of email addresses from the 'Return-Path' header.
+
+---
+
+### make_message
 Creates and optionally sends a Gmail message.
 
-**Arguments:**
-- **`sender`** *(str, optional)*:  
-  Email address of the sender. Default is None.
-- **`to`** *(str or list, optional)*:  
-  Recipient email address(es). Default is None.
-- **`cc`** *(str or list, optional)*:  
-  CC email address(es). Default is None.
-- **`bcc`** *(str or list, optional)*:  
-  BCC email address(es). Default is None.
-- **`subject`** *(str)*:  
-  Email subject. Default is `'No subject'`.
-- **`plain_text`** *(str, optional)*:  
-  Plain text content of the email. Default is None.
-- **`html_text`** *(str, optional)*:  
-  HTML content of the email. Default is None.
-- **`markdown_text`** *(str, optional)*:  
-  Markdown content for the email. Default is None.
-- **`send`** *(bool)*:  
-  Whether to send the email immediately. Default is `True`.
-- **`attachments`** *(str or list, optional)*:  
-  Path(s) to attachment files. Default is None.
+#### Arguments
+- `sender` (str, optional): Email address of the sender. Default: `None`.
+- `to` (str or list, optional): Recipient email address(es). Default: `None`.
+- `cc` (str or list, optional): CC email address(es). Default: `None`.
+- `bcc` (str or list, optional): BCC email address(es). Default: `None`.
+- `subject` (str): Email subject. Default: `'No subject'`.
+- `plain_text` (str, optional): Plain text content of the email. Default: `None`.
+- `html_text` (str, optional): HTML content of the email. Default: `None`.
+- `markdown_text` (str, optional): Markdown content for the email. Default: `None`.
+- `send` (bool): Whether to send the email immediately. Default: `True`.
+- `attachments` (str or list, optional): Path(s) to attachment files. Default: `None`.
 
-**Returns:**  
-The metadata of the sent message if `send=True`, else the draft metadata.
+#### Returns
+- `dict`: Sent message metadata if `send=True`, else draft metadata.
 
 ---
 
-### `trash_message`
-
-**Description:**  
-Moves a Gmail message to the trash.
-
-**Arguments:**
-- **`message_id`** *(str)*:  
-  ID of the message to move to trash.
-
-**Returns:**  
-None
-
----
-
-### `move_message`
-
-**Description:**  
+### move_message
 Moves a Gmail message from one label to another.
 
-**Arguments:**
-- **`message_id`** *(str, optional)*:  
-  ID of the message to move. Default is None.
-- **`message`** *(dict, optional)*:  
-  Message metadata dictionary. Default is None.
-- **`old_label_name`** *(str)*:  
-  Name of the current label.
-- **`new_label_name`** *(str)*:  
-  Name of the target label.
+#### Arguments
+- `message` (dict, optional): Message metadata dictionary. Default: `None`.
+- `message_id` (str, optional): ID of the message to move. Default: `None`.
+- `old_label_name` (str): Name of the current label.
+- `new_label_name` (str): Name of the target label.
 
-**Returns:**  
-None
+#### Returns
+- None
 
 ---
 
-### `move_messages`
+### move_messages
+Moves a list of Gmail messages from one label to another.
 
-**Description:**  
-Moves multiple Gmail messages from one label to another.
+#### Arguments
+- `messages` (list, optional): List of Gmail messages. Each element is a dictionary with keys `'id'` and `'threadID'`. Default: `None`.
+- `old_label_name` (str): Name of the current label to be removed.
+- `new_label_name` (str): Name of the target label to be added.
 
-**Arguments:**
-- **`messages`** *(list, optional)*:  
-  List of message metadata dictionaries. Default is None.
-- **`old_label_name`** *(str)*:  
-  Name of the current label.
-- **`new_label_name`** *(str)*:  
-  Name of the target label.
+#### Returns
+- None
 
-**Returns:**  
-None
+---
+
+### remove_message_label
+Removes one or more labels from a Gmail message.
+
+#### Arguments
+- `message` (dict, optional): Message metadata dictionary. Default: `None`.
+- `message_id` (str): ID of the message to label.
+- `label_names` (str or list): Name(s) of the label(s) to remove.
+- `label_ids` (str or list): ID(s) of the label(s) to remove.
+
+#### Returns
+- None
+
+---
+
+### trash_message
+Moves a Gmail message to the trash.
+
+#### Arguments
+- `message` (dict, optional): Message metadata dictionary. Default: `None`.
+- `message_id` (str, optional): ID of the message to delete. Default: `None`.
+
+#### Returns
+- None
