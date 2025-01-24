@@ -25,18 +25,4 @@
 ## Installation
 	pip install teaching_tools
 
-## Quickstart
-	from teaching_tools import homework, gmail, google_calendar
-
-	# Homework
-	hw = homework(filename="answers.tex")
-	hw.add_latex_answer(name="Q1", value=3.14159)
-	hw.write_answer_file("answers.tex")
-
-	# Gmail
-	gm = gmail(credentials_path="credentials.json", sender="you@example.com")
-	gm.make_message(to="recipient@example.com", subject="Hello", plain_text="Hi there!")
-
-	# Google Calendar
-	cal = google_calendar(credentials_path="credentials.json")
-	cal.add_event(start="January 1, 2025 9:00 AM", title="New Year Meeting")
+<!-- ## Quickstart -->
