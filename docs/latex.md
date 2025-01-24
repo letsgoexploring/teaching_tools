@@ -2,7 +2,7 @@
 
 ---
 
-## `is_command_available`
+## `is_command_available(command)`
 Checks if a command is available in the system's PATH.
 
 ### Arguments
@@ -13,7 +13,7 @@ Checks if a command is available in the system's PATH.
 
 ---
 
-## `make_figure`
+## `make_figure(image_filename, position='h', caption=None, label='', hspace='0cm', height='6.5cm', width=None, caption_top=True, center_image=True, filename=None)`
 Constructs a LaTeX figure environment.
 
 ### Arguments
@@ -33,7 +33,7 @@ Constructs a LaTeX figure environment.
 
 ---
 
-## `make_tabular`
+## `make_tabular(data, table_spec='', row_format={}, column_format={}, hlines=[], clines={}, pos='c', filename=None)`
 Constructs a LaTeX tabular environment.
 
 ### Arguments
@@ -51,7 +51,7 @@ Constructs a LaTeX tabular environment.
 
 ---
 
-## `make_table`
+## `make_table(data, table_spec='', row_format={}, column_format={}, hlines=[], clines={}, position='h', caption=None, label='', caption_top=True, center_table=True, filename=None)`
 Constructs a LaTeX table environment with a tabular content.
 
 ### Arguments
@@ -73,7 +73,7 @@ Constructs a LaTeX table environment with a tabular content.
 
 ---
 
-## `DataFrame_to_array`
+## `DataFrame_to_array(df, include_index=True, include_column_headers=True, keep_index_name=True)`
 Converts a Pandas DataFrame to a NumPy array, including row and column headers.
 
 ### Arguments
@@ -87,7 +87,7 @@ Converts a Pandas DataFrame to a NumPy array, including row and column headers.
 
 ---
 
-## `compile`
+## `compile(x=None)`
 Compiles LaTeX files in the current directory or specified files.
 
 ### Arguments
@@ -101,7 +101,7 @@ Compiles LaTeX files in the current directory or specified files.
 
 ---
 
-## `pdf_latex`
+## `pdf_latex(file_name)`
 Compiles a LaTeX file using `pdflatex`.
 
 ### Arguments
@@ -112,7 +112,7 @@ Compiles a LaTeX file using `pdflatex`.
 
 ---
 
-## `make_handout`
+## `make_handout(slides_file_name, handout_file_name)`
 Generates a LaTeX handout file for Beamer slides by modifying the preamble to include the handout option.
 
 ### Arguments
@@ -121,7 +121,7 @@ Generates a LaTeX handout file for Beamer slides by modifying the preamble to in
 
 ---
 
-## `python_script`
+## `python_script(script)`
 Executes a Python script or list of scripts.
 
 ### Arguments

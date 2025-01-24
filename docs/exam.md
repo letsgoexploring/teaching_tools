@@ -2,7 +2,7 @@
 
 ---
 
-## `make_answer_key`
+## `make_answer_key(exam)`
 Creates an answer key for the given multiple-choice exam.
 
 ### Arguments
@@ -16,7 +16,7 @@ Creates an answer key for the given multiple-choice exam.
 ## `mc_question` Class
 Defines a class for storing and managing the content of a multiple-choice question.
 
-### `__init__`
+### `__init__(question_string=None, correct_string=None)`
 Initializes an `mc_question` instance.
 
 #### Arguments
@@ -25,7 +25,7 @@ Initializes an `mc_question` instance.
 
 ---
 
-### `shuffle_options`
+### `shuffle_options(rng)`
 Shuffles the options of the question if shuffling is enabled.
 
 #### Arguments
@@ -36,7 +36,7 @@ Shuffles the options of the question if shuffling is enabled.
 
 ---
 
-### `add_periods`
+### `add_periods(include_equations=True, correct_string=None)`
 Adds periods to the end of each option if not already present.
 
 #### Arguments
@@ -45,7 +45,7 @@ Adds periods to the end of each option if not already present.
 
 ---
 
-### `capitalize_first`
+### `capitalize_first(correct_string=None)`
 Capitalizes the first letter of each option.
 
 #### Arguments
@@ -56,7 +56,7 @@ Capitalizes the first letter of each option.
 ## `mc_group` Class
 Defines a class for storing and managing a group of multiple-choice questions.
 
-### `__init__`
+### `__init__(group_lines, correct_string)`
 Initializes an `mc_group` instance.
 
 #### Arguments
@@ -65,7 +65,7 @@ Initializes an `mc_group` instance.
 
 ---
 
-### `shuffle_questions`
+### `shuffle_questions(rng)`
 Shuffles the order of questions within the group.
 
 #### Arguments
@@ -76,7 +76,7 @@ Shuffles the order of questions within the group.
 
 ---
 
-### `shuffle_options`
+### `shuffle_options(rng)`
 Shuffles the options for each question in the group.
 
 #### Arguments
@@ -87,7 +87,7 @@ Shuffles the options for each question in the group.
 
 ---
 
-### `add_periods`
+### `add_periods(include_equations=True, correct_string=None)`
 Adds periods to the end of options in all questions.
 
 #### Arguments
@@ -96,7 +96,7 @@ Adds periods to the end of options in all questions.
 
 ---
 
-### `capitalize_first`
+### `capitalize_first(correct_string=None)`
 Capitalizes the first letter of each option in all questions.
 
 #### Arguments
@@ -107,7 +107,7 @@ Capitalizes the first letter of each option in all questions.
 ## `mc_exam` Class
 Defines a class for storing the content of a multiple-choice exam.
 
-### `__init__`
+### `__init__(exam_file=None, exam_lines=None, correct_string='CORRECT', seed=None)`
 Initializes an `mc_exam` instance.
 
 #### Arguments
@@ -118,22 +118,22 @@ Initializes an `mc_exam` instance.
 
 ---
 
-### `print_exam`
+### `print_exam()`
 Prints the content of the exam to the console.
 
 ---
 
-### `print_answer_key`
+### `print_answer_key()`
 Prints the answer key for the exam to the console.
 
 ---
 
-### `show_duplicates`
+### `show_duplicates()`
 Displays any duplicate options in the exam questions.
 
 ---
 
-### `exam_to_latex`
+### `exam_to_latex(filename=None)`
 Exports the exam content to a LaTeX file.
 
 #### Arguments
@@ -141,7 +141,7 @@ Exports the exam content to a LaTeX file.
 
 ---
 
-### `answer_key_to_latex`
+### `answer_key_to_latex(filename=None)`
 Exports the answer key to a LaTeX file.
 
 #### Arguments
@@ -149,7 +149,7 @@ Exports the answer key to a LaTeX file.
 
 ---
 
-### `shuffle_questions`
+### `shuffle_questions(filename=None, seed=None, shuffle_within_groups=True)`
 Shuffles the questions in the exam.
 
 #### Arguments
@@ -162,7 +162,7 @@ Shuffles the questions in the exam.
 
 ---
 
-### `set_seed`
+### `set_seed(seed=None)`
 Sets the random seed for reproducibility.
 
 #### Arguments
@@ -170,7 +170,7 @@ Sets the random seed for reproducibility.
 
 ---
 
-### `shuffle_options`
+### `shuffle_options(filename=None, seed=None)`
 Shuffles the options within each question.
 
 #### Arguments
@@ -182,7 +182,7 @@ Shuffles the options within each question.
 
 ---
 
-### `shuffle_options_and_questions`
+### `shuffle_options_and_questions(filename=None, seed=None, shuffle_within_groups=True)`
 Shuffles both questions and options in the exam.
 
 #### Arguments
@@ -195,7 +195,7 @@ Shuffles both questions and options in the exam.
 
 ---
 
-### `add_periods`
+### `add_periods(include_equations=True)`
 Adds periods to the end of sentences in the exam answer choices.
 
 #### Arguments
@@ -203,12 +203,12 @@ Adds periods to the end of sentences in the exam answer choices.
 
 ---
 
-### `capitalize_first`
+### `capitalize_first()`
 Capitalizes the first letter of each sentence in the exam answer choices.
 
 ---
 
-### `get_answer_key_letters`
+### `get_answer_key_letters(option_characters=string.ascii_lowercase, option_character_format='(CHARACTER)')`
 Retrieves the correct letter for each answer in the key.
 
 #### Arguments

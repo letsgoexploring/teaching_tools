@@ -1,33 +1,50 @@
-# Homework Class
+# Homework Formatting and Export Module Documentation
 
-The `homework` class provides tools to format homework answers in LaTeX or Gradescope-compatible formats.
+---
 
-## Methods
+## `homework.__init__(filename=None)`
+Initializes an instance of the `homework` class.
 
-### `__init__(self, filename=None)`
-Initializes the `homework` class.
-
-**Args**:
+### Arguments
 - `filename` (str, optional): Name of the LaTeX file to save answers to. Default is `None`.
 
-### `add_latex_answer(self, name, value, precision=4)`
-Adds an answer as a LaTeX command.
+### Attributes
+- `filename` (str): File name for the LaTeX output file.
+- `latex_answers` (dict): Dictionary for storing answers as LaTeX commands.
 
-**Args**:
-- `name` (str): Name of the LaTeX command.
-- `value` (str or numeric): Answer to store.
-- `precision` (int): Number of decimal places for numeric values. Default is `4`.
+---
 
-### `gs_answer(self, value, tolerance=8, precision=0.005)`
-Generates a Gradescope-compatible string.
+## `homework.add_latex_answer(name, value, precision=4)`
+Adds an answer as a LaTeX command to the `latex_answers` dictionary.
 
-**Args**:
-- `value` (str or numeric): Answer to format.
-- `tolerance` (float): Error tolerance. Default is `8`.
-- `precision` (float): Rounding precision. Default is `0.005`.
+### Arguments
+- `name` (str): Name of the new LaTeX command. Must conform to LaTeX naming conventions.
+- `value` (str or numeric): Answer to be stored. Strings are stored as-is, numeric values are formatted.
+- `precision` (int): Number of decimal places to round numeric values. Default is `4`.
 
-### `write_answer_file(self, filename)`
-Exports answers as LaTeX commands in a `.tex` file.
+### Returns
+- `None`
 
-**Args**:
-- `filename` (str): Name of the LaTeX file to save answers.
+---
+
+## `homework.gs_answer(value, tolerance=8, precision=0.005)`
+Generates a Gradescope-compatible formatted string for an answer.
+
+### Arguments
+- `value` (str or numeric): Answer to format for Gradescope.
+- `tolerance` (float): Error tolerance for the answer. Default is `8`.
+- `precision` (float): Precision for rounding numeric values. Default is `0.005`.
+
+### Returns
+- `str`: A Gradescope-compatible formatted string.
+
+---
+
+## `homework.write_answer_file(filename)`
+Exports LaTeX answers as new commands in a `.tex` file.
+
+### Arguments
+- `filename` (str): Name of the LaTeX file to save answers to. Appends `.tex` if missing.
+
+### Returns
+- `None`

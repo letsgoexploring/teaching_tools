@@ -1,11 +1,11 @@
 # Google Calendar API Module Documentation
 
-## google_calendar Class
+## `google_calendar` Class
 Class for interacting with Google Calendar. This class provides methods to add, find, delete, and import events from Google Calendar, as well as parse `.ics` files for event details.
 
 ---
 
-### `__init__`
+### `__init__(credentials_path='credentials.json', token_path='token.json')`
 Initializes a `google_calendar` instance.
 
 #### Arguments
@@ -20,7 +20,7 @@ Initializes a `google_calendar` instance.
 
 ---
 
-### `add_event`
+### `add_event(start, end=None, duration=0, duration_units='H', title='Event', description=None, calendar_name=None, calendar_id=None, time_zone=None)`
 Adds a single event to a Google Calendar.
 
 #### Arguments
@@ -39,7 +39,7 @@ Adds a single event to a Google Calendar.
 
 ---
 
-### `find_future_events`
+### `find_future_events(title_contains=None, description_contains=None, calendar_name=None, calendar_id=None, maxResults=1000)`
 Finds future events matching specified criteria.
 
 #### Arguments
@@ -54,7 +54,7 @@ Finds future events matching specified criteria.
 
 ---
 
-### `delete_events`
+### `delete_events(events, calendar_name=None, calendar_id=None)`
 Deletes events from a Google Calendar.
 
 #### Arguments
@@ -67,7 +67,7 @@ Deletes events from a Google Calendar.
 
 ---
 
-### `parse_ics`
+### `parse_ics(ics_path)`
 Parses an `.ics` file into event data.
 
 #### Arguments
@@ -78,7 +78,7 @@ Parses an `.ics` file into event data.
 
 ---
 
-### `make_multiple_events`
+### `make_multiple_events(title='Event', description=None, start_date, end_date=None, event_time=None, duration=None, duration_units='H', freq='B', periods=None, calendar_name=None, calendar_id=None, time_zone=None)`
 Creates multiple recurring events in a Google Calendar.
 
 #### Arguments
@@ -97,7 +97,7 @@ Creates multiple recurring events in a Google Calendar.
 
 ---
 
-### `import_ics`
+### `import_ics(ics_path=None, calendar_name=None, calendar_id=None, delete_ics=False)`
 Imports events from an `.ics` file into a Google Calendar.
 
 #### Arguments

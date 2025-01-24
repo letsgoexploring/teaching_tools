@@ -1,6 +1,6 @@
 # Gmail API Module Documentation
 
-## authenticate_google_app
+## `authenticate_google_app(credentials_path, token_path, SCOPES, service_name, service_version)`
 Authenticates and initializes a Google API service.
 
 ### Arguments
@@ -15,10 +15,10 @@ Authenticates and initializes a Google API service.
 
 ---
 
-## gmail Class
+## `gmail` Class
 Class for managing and sending Gmail messages via the Google API.
 
-### __init__
+### `__init__(credentials_path='credentials.json', token_path='token.json', sender=None)`
 Initializes an instance of the `gmail` class.
 
 #### Arguments
@@ -32,7 +32,7 @@ Initializes an instance of the `gmail` class.
 
 ---
 
-### add_message_label
+### `add_message_label(message=None, message_id, label_names, label_ids)`
 Adds one or more labels to a Gmail message.
 
 #### Arguments
@@ -46,7 +46,7 @@ Adds one or more labels to a Gmail message.
 
 ---
 
-### delete_message
+### `delete_message(message=None, message_id)`
 Permanently deletes a Gmail message.
 
 #### Arguments
@@ -58,7 +58,7 @@ Permanently deletes a Gmail message.
 
 ---
 
-### get_all_labels
+### `get_all_labels()`
 Retrieves all Gmail labels for the user.
 
 #### Returns
@@ -66,7 +66,7 @@ Retrieves all Gmail labels for the user.
 
 ---
 
-### get_from_sender
+### `get_from_sender(sender, label_name=None, label_id=None)`
 Finds all messages from a specific sender.
 
 #### Arguments
@@ -79,7 +79,7 @@ Finds all messages from a specific sender.
 
 ---
 
-### get_label_id
+### `get_label_id(label_name)`
 Retrieves the ID of a Gmail label by its name.
 
 #### Arguments
@@ -90,7 +90,7 @@ Retrieves the ID of a Gmail label by its name.
 
 ---
 
-### get_labeled_messages
+### `get_labeled_messages(label_name=None, label_id=None)`
 Retrieves messages with a specific Gmail label.
 
 #### Arguments
@@ -102,7 +102,7 @@ Retrieves messages with a specific Gmail label.
 
 ---
 
-### get_message
+### `get_message(message=None, message_id=None)`
 Retrieves a Gmail message by its ID.
 
 #### Arguments
@@ -114,7 +114,7 @@ Retrieves a Gmail message by its ID.
 
 ---
 
-### get_message_return_path
+### `get_message_return_path(message=None, message_id=None)`
 Retrieves the 'Return-Path' header of a Gmail message.
 
 #### Arguments
@@ -126,7 +126,7 @@ Retrieves the 'Return-Path' header of a Gmail message.
 
 ---
 
-### get_return_paths
+### `get_return_paths(messages)`
 Retrieves 'Return-Path' headers from a list of messages.
 
 #### Arguments
@@ -137,7 +137,7 @@ Retrieves 'Return-Path' headers from a list of messages.
 
 ---
 
-### make_message
+### `make_message(sender=None, to=None, cc=None, bcc=None, subject='No subject', plain_text=None, html_text=None, markdown_text=None, send=True, attachments=None)`
 Creates and optionally sends a Gmail message.
 
 #### Arguments
@@ -157,7 +157,7 @@ Creates and optionally sends a Gmail message.
 
 ---
 
-### move_message
+### `move_message(message=None, message_id=None, old_label_name, new_label_name)`
 Moves a Gmail message from one label to another.
 
 #### Arguments
@@ -171,7 +171,7 @@ Moves a Gmail message from one label to another.
 
 ---
 
-### move_messages
+### `move_messages(messages=None, old_label_name, new_label_name)`
 Moves a list of Gmail messages from one label to another.
 
 #### Arguments
@@ -184,7 +184,7 @@ Moves a list of Gmail messages from one label to another.
 
 ---
 
-### remove_message_label
+### `remove_message_label(message=None, message_id, label_names, label_ids)`
 Removes one or more labels from a Gmail message.
 
 #### Arguments
@@ -198,7 +198,7 @@ Removes one or more labels from a Gmail message.
 
 ---
 
-### trash_message
+### `trash_message(message=None, message_id=None)`
 Moves a Gmail message to the trash.
 
 #### Arguments
