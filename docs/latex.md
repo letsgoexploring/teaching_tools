@@ -1,140 +1,128 @@
-# LaTeX Tools
-
-This module provides utility functions for managing and compiling LaTeX documents, creating tables and figures, and executing Python scripts.
+# Lecture Notes, Tables, Figures, and Slides Management Module Documentation
 
 ---
 
-## Functions
+## `is_command_available`
+Checks if a command is available in the system's PATH.
 
-### `is_command_available`
-**Description:**  
-Checks if a given command is available in the system's PATH.
-
-**Args:**
+### Arguments
 - `command` (str): The command to check.
 
-**Returns:**
+### Returns
 - `bool`: `True` if the command is available, `False` otherwise.
 
 ---
 
-### `make_figure`
-**Description:**  
+## `make_figure`
 Constructs a LaTeX figure environment.
 
-**Args:**
+### Arguments
 - `image_filename` (str): Path and filename of the image file.
-- `position` (str): Position specifier for the figure (`'h'`, `'t'`, `'b'`, `'p'`). Default: `'h'`.
-- `caption` (str, optional): Caption for the figure. Default: `None`.
-- `label` (str): Label for referencing the figure. Default: `''`.
-- `hspace` (str): Horizontal offset for the image. Default: `'0cm'`.
-- `height` (str): Height of the image. Default: `'6.5cm'`.
-- `width` (str, optional): Width of the image. Default: `None`.
-- `caption_top` (bool): Place caption above the figure. Default: `True`.
-- `center_image` (bool): Center the image in the figure environment. Default: `True`.
-- `filename` (str, optional): Save the LaTeX code to a file. Default: `None`.
+- `position` (str): Position specifier for the figure (`'h'`, `'t'`, `'b'`, `'p'`). Default is `'h'`.
+- `caption` (str, optional): Caption for the figure. Default is `None`.
+- `label` (str): Label for referencing the figure. Default is an empty string.
+- `hspace` (str): Horizontal position offset of the image. Default is `'0cm'`.
+- `height` (str): Height of the image. Default is `'6.5cm'`.
+- `width` (str, optional): Width of the image. Default is `None`.
+- `caption_top` (bool): Whether to place the caption above the figure. Default is `True`.
+- `center_image` (bool): Whether to center the image in the figure environment. Default is `True`.
+- `filename` (str, optional): Path to save the generated LaTeX figure file. Default is `None`.
 
-**Returns:**
-- `str`: The LaTeX code for the figure.
+### Returns
+- `str`: LaTeX string for the figure environment.
 
 ---
 
-### `make_tabular`
-**Description:**  
+## `make_tabular`
 Constructs a LaTeX tabular environment.
 
-**Args:**
-- `data` (numpy.ndarray): 2D array with data for the table.
-- `table_spec` (str): Column alignment for the tabular environment. Default: `''`.
-- `row_format` (dict): Row-specific formatting. Keys are row numbers, values are LaTeX commands.
-- `column_format` (dict): Column-specific formatting. Keys are column numbers, values are LaTeX commands.
-- `hlines` (list): Row numbers to add horizontal lines below. Default: `[]`.
-- `clines` (dict): Row numbers as keys, column ranges as values for clines. Default: `{}`.
-- `pos` (str): Vertical positioning specifier (`'b'`, `'c'`, `'t'`). Default: `'c'`.
-- `filename` (str, optional): Save the LaTeX code to a file. Default: `None`.
+### Arguments
+- `data` (`numpy.ndarray`): 2D array with data for the table.
+- `table_spec` (str): Column alignment string for the tabular environment. Default is an empty string.
+- `row_format` (dict): Row-specific formatting, with keys as row numbers and values as LaTeX formatting commands. Default is `{}`.
+- `column_format` (dict): Column-specific formatting, with keys as column numbers and values as LaTeX formatting commands. Default is `{}`.
+- `hlines` (list): List of row numbers for horizontal lines. Default is `[]`.
+- `clines` (dict): Dictionary for specific clines with row numbers as keys and column range strings as values. Default is `{}`.
+- `pos` (str): Vertical positioning specifier (`'b'`, `'c'`, `'t'`). Default is `'c'`.
+- `filename` (str, optional): Path to save the LaTeX tabular file. Default is `None`.
 
-**Returns:**
-- `str`: The LaTeX code for the tabular environment.
-
----
-
-### `make_table`
-**Description:**  
-Creates a LaTeX table environment with tabular content.
-
-**Args:**
-- `data` (numpy.ndarray): 2D array with data for the table.
-- `table_spec` (str): Column alignment for the tabular environment. Default: `''`.
-- `row_format`, `column_format`, `hlines`, `clines` (same as `make_tabular`).
-- `position` (str): Position specifier for the table (`'h'`, `'t'`, `'b'`, `'p'`). Default: `'h'`.
-- `caption` (str, optional): Caption for the table. Default: `None`.
-- `label` (str): Label for referencing the table. Default: `''`.
-- `caption_top` (bool): Place caption above the table. Default: `True`.
-- `center_table` (bool): Center the table in the environment. Default: `True`.
-- `filename` (str, optional): Save the LaTeX code to a file. Default: `None`.
-
-**Returns:**
-- `str`: The LaTeX code for the table.
+### Returns
+- `str`: LaTeX string for the tabular environment.
 
 ---
 
-### `DataFrame_to_array`
-**Description:**  
+## `make_table`
+Constructs a LaTeX table environment with a tabular content.
+
+### Arguments
+- `data` (`numpy.ndarray`): 2D array with data for the table.
+- `table_spec` (str): Column alignment string for the tabular environment. Default is an empty string.
+- `row_format` (dict): Row-specific formatting, with keys as row numbers and values as LaTeX formatting commands. Default is `{}`.
+- `column_format` (dict): Column-specific formatting, with keys as column numbers and values as LaTeX formatting commands. Default is `{}`.
+- `hlines` (list): List of row numbers for horizontal lines. Default is `[]`.
+- `clines` (dict): Dictionary for specific clines with row numbers as keys and column range strings as values. Default is `{}`.
+- `position` (str): Position specifier for the table (`'h'`, `'t'`, `'b'`, `'p'`). Default is `'h'`.
+- `caption` (str, optional): Caption for the table. Default is `None`.
+- `label` (str): Label for referencing the table. Default is an empty string.
+- `caption_top` (bool): Whether to place the caption above the table. Default is `True`.
+- `center_table` (bool): Whether to center the table in the environment. Default is `True`.
+- `filename` (str, optional): Path to save the LaTeX table file. Default is `None`.
+
+### Returns
+- `str`: LaTeX string for the table environment.
+
+---
+
+## `DataFrame_to_array`
 Converts a Pandas DataFrame to a NumPy array, including row and column headers.
 
-**Args:**
-- `df` (pandas.DataFrame): Input DataFrame.
-- `include_index` (bool): Include the index in the output. Default: `True`.
-- `include_column_headers` (bool): Include column headers. Default: `True`.
-- `keep_index_name` (bool): Keep the index name in the output. Default: `True`.
+### Arguments
+- `df` (`pandas.DataFrame`): Input DataFrame.
+- `include_index` (bool): Whether to include the index in the output. Default is `True`.
+- `include_column_headers` (bool): Whether to include column headers. Default is `True`.
+- `keep_index_name` (bool): Whether to keep the index name in the output. Default is `True`.
 
-**Returns:**
-- `numpy.ndarray`: Converted array.
+### Returns
+- `numpy.ndarray`: Converted array with headers and index if specified.
 
 ---
 
-### `compile`
-**Description:**  
+## `compile`
 Compiles LaTeX files in the current directory or specified files.
 
-**Args:**
-- `x` (str or list, optional): Filename(s) to compile. If `None`, compiles all `.tex` files in the current directory.
+### Arguments
+- `x` (str or list, optional): Filename or list of filenames to compile. If `None`, compiles all `.tex` files in the current directory.
 
-**Raises:**
-- `RuntimeError`: If `pdflatex` or `bibtex` is unavailable.
+### Deletes
+- Auxiliary files generated during compilation.
 
-**Deletes:**  
-Removes auxiliary files generated during compilation.
+### Raises
+- `RuntimeError`: If `pdflatex` or `bibtex` is not available in the system.
 
 ---
 
-### `pdf_latex`
-**Description:**  
+## `pdf_latex`
 Compiles a LaTeX file using `pdflatex`.
 
-**Args:**
-- `file_name` (str): LaTeX file to compile.
+### Arguments
+- `file_name` (str): Name of the LaTeX file to compile.
 
-**Raises:**
-- `RuntimeError`: If `pdflatex` or `bibtex` is unavailable.
+### Raises
+- `RuntimeError`: If `pdflatex` or `bibtex` is not available in the system.
 
 ---
 
-### `make_handout`
-**Description:**  
-Creates a handout version of Beamer slides by modifying the preamble.
+## `make_handout`
+Generates a LaTeX handout file for Beamer slides by modifying the preamble to include the handout option.
 
-**Args:**
-- `slides_file_name` (str): Original slides filename.
+### Arguments
+- `slides_file_name` (str): Name of the original slides file.
 - `handout_file_name` (str): Name of the generated handout file.
 
 ---
 
-### `python_script`
-**Description:**  
-Executes a Python script or a list of scripts.
+## `python_script`
+Executes a Python script or list of scripts.
 
-**Args:**
-- `script` (str or list): Filename(s) of the script(s) to execute.
-
----
+### Arguments
+- `script` (str or list): Filename or list of filenames for Python scripts.
