@@ -1,6 +1,6 @@
-# Teaching Tools
+# `automate_teaching`
 
-`teaching_tools` is a Python module with utilities to assist educators, particularly in higher educatin, with tasks such as managing homework, creating multiple choice exams, sending emails, interacting with Google Calendar, and working with LaTeX files. The utilities for interacting with Gmail and Google Calendar may be useful in contexts outside of education
+`automate_teaching` is a Python module with utilities to assist educators, particularly in higher education, with tasks such as managing homework, creating multiple choice exams, sending emails, interacting with Google Calendar, and working with LaTeX files. The utilities for interacting with Gmail and Google Calendar may be useful in contexts outside of education
 
 ## Features
 - Send and manage Gmail messages.
@@ -23,6 +23,6 @@
 - [Standalone Functions](docs/functions.md)
 
 ## Installation
-	pip install teaching_tools
+	pip install automate_teaching
 
 <!-- ## Quickstart -->
